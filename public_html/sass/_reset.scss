@@ -1,0 +1,98 @@
+// main width
+$main-width: 1120px;
+$second-width: 920px;
+
+// font
+$main-font: 'proxima_nova_rgregular', Helvetica, sans-serif;
+$font-ico: 'fontello', arial,sans-serif;
+$font-black: 'proxima_nova_blblack', arial,sans-serif;
+$font-bold: 'proxima_nova_rgbold', arial,sans-serif;
+$font-italic: 'proxima_novaregular_italic', arial,sans-serif;
+
+// colors
+$link-color: #d83b2a;
+$color-link-white: #fff;
+$color-white: #fff;
+$color-white1: #efefef;
+$color-black: #000;
+$color-green: #51c07e;
+$color-light-dark: #161414;
+$color-light-dark1: #1e1e1e;
+$color-light-dark2: #282828;
+$color-light-grey: #dadada;
+$color-light-grey1: #ababab;
+$color-light-grey2: #8b8b8b;
+$color-light-grey3: #6e6e6e;
+$color-light-grey4: #c1c1c1;
+$color-light-grey5: #9e9d9d;
+$color-main: #4f4f4f;
+$color-red: #d83b2a;
+$background-main: #f9f8f8;
+$background-grey: #4f4f4f;
+$background-green: #51c07e;
+$background-light-grey: #e9e9e9;
+$background-light-grey1: #ccc;
+$background-light-grey2: #e9e9e9;
+$background-black: #000;
+$background-black1: #161414;
+$background-white: #fff;
+$background-light-green: #75ab8b;
+$background-blue: #3b5998;
+$background-light-blue: #597da3;
+$background-red: #d83b2a;
+$border-red: #d83b2a;
+$border-black: #000;
+$border-blue: #3b5998;
+$border-green: #51c07e;
+$border-light-white: #f9f8f8;
+$ico-blue: #3cf;
+$ico-red: #d83b2a;
+$star-grey: #959595;
+$star-red: #d83b2a;
+
+// directories
+$img-dir: '../images/';
+
+// list nulling
+@mixin list-nulling() {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+//mixins for nulling
+@mixin indent-minus() {
+	text-indent: -9999px;
+	overflow: hidden;
+}
+//mixins for radius
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+	position: relative;
+}
+//mixins for shadow
+@mixin box-shadow($shadow) {
+	box-shadow: $shadow;
+	-moz-box-shadow: $shadow;
+	-webkit-box-shadow: $shadow;
+}
+//mixins for gradien
+@mixin gradient($from, $to) {
+	background-color: $from;
+	background-image: -moz-linear-gradient($from, $to);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+	background-image: -webkit-linear-gradient($from, $to);
+	background-image: -o-linear-gradient($from, $to);
+	-pie-background: linear-gradient($from, $to);
+}
+
+// mixin width all
+@mixin main-width() {
+	margin: 0 -9999px;
+	padding: 0 9999px;
+	width: 100%;
+	overflow: hidden;
+}
