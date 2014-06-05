@@ -265,14 +265,14 @@ class User extends BaseActiveRecord
         return array(
             array('email', 'required'),
             array('email', 'unique','message'=>'Email уже есть в базе'),
-            array('status, requests_purchase_id, subscribe_regular, subscribe, sort', 'numerical', 'integerOnly' => true),
+            array('status, sort', 'numerical', 'integerOnly' => true),
             array('login, email', 'length', 'max' => 64),
             array('password', 'length', 'min' => 6),
             array('password', 'required', 'on' => 'create'),
             array('display_name', 'length', 'max' => 64),
-            array('last_name, activation_code, retrieve_code, first_name, position, image_id, detail_text, sort,company,companyrole,phone,date_create,companygroup,city,address', 'safe'),
+            array('last_name, activation_code, retrieve_code, first_name, image_id, detail_text, sort,date_create', 'safe'),
             array('image_id', 'file', 'types' => File::getAllowedExtensions(), 'allowEmpty' => true, 'on' => 'upload'),
-            array('id, login, email, display_name, activation_code, retrieve_code, last_name, first_name, position, status, subscribe_regular, subscrib', 'safe', 'on' => 'search'),
+            array('id, login, email, display_name, activation_code, retrieve_code, last_name, first_name, status', 'safe', 'on' => 'search'),
         );
     }
 
@@ -309,11 +309,9 @@ class User extends BaseActiveRecord
             'display_name' => Yii::t('backend', 'Display Name'),
             'last_name' => Yii::t('backend', 'Last Name'),
             'first_name' => Yii::t('backend', 'Family Name'),
-            'position' => Yii::t('backend', 'Position'),
             'status' => Yii::t('backend', 'Status'),
             'detail_text' => Yii::t('backend', 'Description'),
             'sort' => Yii::t('backend', 'Sort'),
-            'subscribe_regular' => Yii::t('backend', 'Subscribe regular'),
             'subscribe' => Yii::t('backend', 'Subscribe'),
             'authItems' => Yii::t('backend', 'Role'),
             'company' => Yii::t('backend', 'Company'),
@@ -361,10 +359,7 @@ class User extends BaseActiveRecord
         $criteria->compare('t.display_name', $this->display_name, true);
         $criteria->compare('t.last_name', $this->last_name, true);
         $criteria->compare('t.first_name', $this->first_name, true);
-        $criteria->compare('t.position', $this->position, true);
         $criteria->compare('t.status', $this->status);
-        $criteria->compare('t.subscribe_regular', $this->subscribe_regular);
-        $criteria->compare('t.subscribe', $this->subscribe);
 		
 
         return parent::searchInit($criteria);
@@ -457,7 +452,6 @@ class User extends BaseActiveRecord
             $profile->last_name = $user->last_name;
             $profile->email = $user->email;
             $profile->first_name = $user->first_name;
-            $profile->position = $user->position;
         }
         return $profile;
     }
