@@ -2,18 +2,8 @@
 
 class SiteController extends FrontController
 {
-    public function init()
-    {
-        parent::init();
-        Yii::import('common.extensions.yii-mail.*');
-    }
-
     public function actionIndex()
     {
-        if (Yii::app()->user->getId() > 0)
-            $this->redirect('/plan/list/');
-
-        $this->setBodyClass('index');
         $this->render('index');
     }
 
@@ -52,56 +42,6 @@ class SiteController extends FrontController
         $this->render('register', array('model' => $model, 'user' => $user, 'page' => $page));
     }
 
-    public function actionGetmarkets()
-    {
-        Market::model()->getAutocomplete();
-    }
-
-    public function actionGetregistercompany()
-    {
-        $company = Company::model()->findRegisterByEgrpou(trim($_GET['id']));
-        echo CJSON::encode($company);
-    }
-    public function actionGetmarketcompanies()
-    {
-        $company = Company::model()->findMarketCompanies(trim($_REQUEST['market_id']));
-        echo CJSON::encode($company);
-    }
-    public function actionGetregions()
-    {
-        echo CJSON::encode(Region::model()->getCountryRegions($_GET['country_id']));
-    }
-
-    public function actionGetcities()
-    {
-        echo CJSON::encode(City::model()->getRegionCities($_GET['region_id'], $_GET['term']));
-    }
-
-    public function actionGettags()
-    {
-        echo CJSON::encode(Tag::model()->getAutotag($_GET['term']));
-    }
-
-    public function actionGetcompany()
-    {
-        echo CJSON::encode(Company::model()->getAutocompany($_GET['term']));
-    }
-
-    public function actionGetfiltercompany()
-    {
-        echo CJSON::encode(Company::model()->getRequestCompanies($_GET['term'],$_GET['pageid']));
-    }
-
-    public function actionGetuser()
-    {
-        echo CJSON::encode(User::model()->findUser($_GET['term']));
-    }
-
-    public function actionGetmarkettype()
-    {
-        echo Market::model()->getMarkettype($_GET['markettype_id']);
-    }
-
     /**
      * This is the action to handle external exceptions.
      */
@@ -132,7 +72,6 @@ class SiteController extends FrontController
             }
         }
     }
-
 
     public function actionLoginoauth()
     {
@@ -234,74 +173,6 @@ class SiteController extends FrontController
         $this->redirect(Yii::app()->homeUrl);
     }
 
-    public function actionGethelp()
-    {
-        $helps = array();
-        if (isset($_GET['id']))
-            $helps = Help::model()->with('helpgroup')->findAll('helpgroup.page_id=' . $_GET['id']);
-        $this->renderPartial('help', array('helps' => $helps));
-    }
-
-    public function actionTest2()
-    {
-        if (Yii::app()->detectMobileBrowser->showMobile) {
-            echo 'mobile';
-
-        } else
-            echo 'not mobile';
-    }
-
-    public function actionProfilecompanies()
-    {
-        $company = Company::model()->getProfileCompanies();
-        echo CJSON::encode($company);
-    }
-
-    public function actionSetactivecompany()
-    {
-        if (isset($_POST['company_id']) && yii::app()->user->getId() > 0) {
-            $model = CompanyUser::model()->with('company')->findByAttributes(array('user_id' => yii::app()->user->getId(), 'company_id' => $_POST['company_id']));
-            if ($model->id && !$model->major) {
-                CompanyUser::model()->updateAll(array('major' => 0, 'user_id=:user_id AND company_id!=:company_id AND major=1', array(':user_id' => yii::app()->user->getId(), ':company_id' => $_POST['company_id'])));
-                $model->major = 1;
-                if ($model->save()) {
-                    $city=City::model()->findByPk($model->company->city_id);
-                    if($city)
-                        $city_title=$city->title;
-                    else
-                        $city_title='';
-                    Yii::app()->session['major_company'] = array('id' => $model->company_id, 'title' => $model->company->title, 'city' => $city_title, 'balance'=>Payments::model()->companyBalance($model->company_id));
-                }
-            }
-        }
-    }
-    #tests
-    public function actionTest3()
-    {
-        /* $form = new FeedbackForm();
-         if ($form->validate()) {
-             echo    $form->send();
-
-
-
-         }*/
-        $body = $this->renderPartial('/mail/register', array('a' => 1), true);
-        $message = new YiiMailMessage();
-        $message->setBody($body, 'text/html');
-        $message->setSubject('Регистрация');
-        $message->setTo('dmitriy.bozhok@gmail.com');
-        $message->setFrom(array(
-            'info@zakupki-online.com' => 'Zakupki-Online.com'
-        ));
-        return Yii::app()->mail->send($message);
-
-
-        //print_r(CHtml::listData(Market::model()->findAll(), 'id', 'title', 'markettepe_id'));
-        //$form =new RegisterForm;
-        //$model=
-        //echo CHtml::activeDropDownList($form,'markets',CHtml::listData(Market::model()->findAll(),'id','title','markettype.title')); //brand.name is going to group the items.
-
-    }
     public function actionActivate()
     {
         if(User::model()->confirmEmail($_GET['activation_code'])){
@@ -361,96 +232,8 @@ class SiteController extends FrontController
         foreach ($role as $role)
             echo $role -> name;*/
     }
-    public function actionPresentation(){
-        $this->layout='presentation';
-        $this->render('presentation');
-    }
-    public function actionGetupdates(){
-        echo CJSON::encode(User::model()->getUpdates());
-    }
-    public function actionOfferexport(){
-        header("Content-type: text/xml");
-
-        $connection = Yii::app()->db;
-        $sql = '
-            SELECT
-              z_offer.id AS offer_id,
-              z_offer.`product_id`,
-              z_product.`purchase_id`,
-              z_company.id AS buyer_id,
-              z_company.title AS buyer_name,
-              CONCAT(z_user.`first_name`," ",z_user.`last_name`) AS buyer_user,
-              z_purchase.`date_closed`,
-              z_purchase.`date_deliver`,
-              z_offer.`delay`,
-              z_tag.title AS product,
-              z_offer.`amount`,
-              z_unit.title AS unit,
-              z_offer.`price`,
-              z_offer.`price`*z_offer.`amount` AS total,
-              z_offer.`delivery`,
-              company.id AS seller_id,
-              company.title AS seller_name,
-              company.egrpou AS seller_egrpou
-            FROM
-              z_offer
-              INNER JOIN z_tag
-                ON z_tag.`id` = z_offer.`tag_id`
-              INNER JOIN z_product
-                ON z_product.id=z_offer.product_id
-              INNER JOIN z_unit
-                ON z_unit.`id`=z_product.`unit_id`
-              INNER JOIN z_purchase
-                ON z_purchase.id=z_product.`purchase_id`
-              INNER JOIN z_company
-                ON z_company.id=z_purchase.`company_id`
-              INNER JOIN z_user
-                ON z_user.id=z_purchase.`user_id`
-              INNER JOIN z_company company
-                ON company.id=z_offer.`company_id`
-            WHERE z_offer.`winner` = 1 AND z_purchase.company_id=1
-            LIMIT 0, 20
-            ';
-        $command = $connection->createCommand($sql);
-        //$command->bindParam(":purchase_id", $params['purchase_id'], PDO::PARAM_INT);
-        $offers = $command->queryAll();
-
-
-        $xml_output = "<?xml version=\"1.0\"?>\n";
-        $xml_output .= "<entries>\n";
-
-        foreach($offers as $row){
-            $xml_output .= "\t<entry>\n";
-            //$xml_output .= "\t\t<date>" . $row['date'] . "</date>\n";
-            // Escaping illegal characters
-            $row['buyer_name'] = str_replace("&", "&", $row['buyer_name']);
-            $row['buyer_name'] = str_replace("<", "<", $row['buyer_name']);
-            $row['buyer_name'] = str_replace(">", "&gt;", $row['buyer_name']);
-            $row['buyer_name'] = str_replace("\"", "&quot;", $row['buyer_name']);
-
-            $row['buyer_user'] = str_replace("&", "&", $row['buyer_user']);
-            $row['buyer_user'] = str_replace("<", "<", $row['buyer_user']);
-            $row['buyer_user'] = str_replace(">", "&gt;", $row['buyer_user']);
-            $row['buyer_user'] = str_replace("\"", "&quot;", $row['buyer_user']);
-
-            $row['product'] = str_replace("&", "&", $row['product']);
-            $row['product'] = str_replace("<", "<", $row['product']);
-            $row['product'] = str_replace(">", "&gt;", $row['product']);
-            $row['product'] = str_replace("\"", "&quot;", $row['product']);
-
-            $row['seller_name'] = str_replace("&", "&", $row['seller_name']);
-            $row['seller_name'] = str_replace("<", "<", $row['seller_name']);
-            $row['seller_name'] = str_replace(">", "&gt;", $row['seller_name']);
-            $row['seller_name'] = str_replace("\"", "&quot;", $row['seller_name']);
-            foreach($row as $k=>$v){
-                $xml_output .= "\t\t<".$k.">".$v."</".$k.">\n";
-            }
-            $xml_output .= "\t</entry>\n";
-        }
-
-        $xml_output .= "</entries>";
-
-        echo $xml_output;
+    public function actionContacts(){
+        $this->render('contacts');
     }
 
 }

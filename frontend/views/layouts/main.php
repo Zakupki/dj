@@ -22,21 +22,21 @@
         <div class="n-frame">
             <nav id="nav">
                 <ul>
-                    <li class="active"><a href="/">главная</a></li>
-                    <li><a href="/article/">Почитать</a></li>
-                    <li><a href="#">афиша</a></li>
-                    <li><a href="/chronicle/">хроника</a></li>
-                    <li><a href="#">музыка</a></li>
-                    <li><a href="#">стиль</a></li>
-                    <li><a href="#">техника</a></li>
-                    <li><a href="#">места</a></li>
-                    <li><a href="#">контакты</a></li>
+                    <li<?=($this->id=='site' && $this->action->id=='index')?' class="active"':'';?>><a href="/">главная</a></li>
+                    <li<?=($this->id=='article')?' class="active"':'';?>><a href="/article/">Почитать</a></li>
+                    <li<?=($this->id=='event')?' class="active"':'';?>><a href="/event/">афиша</a></li>
+                    <li<?=($this->id=='chronicle')?' class="active"':'';?>><a href="/chronicle/">хроника</a></li>
+                    <li<?=($this->id=='music')?' class="active"':'';?>><a href="/music/">музыка</a></li>
+                    <li<?=($this->id=='style')?' class="active"':'';?>><a href="/style/">стиль</a></li>
+                    <li<?=($this->id=='tech')?' class="active"':'';?>><a href="/tech/">техника</a></li>
+                    <li<?=($this->id=='place')?' class="active"':'';?>><a href="/place/">места</a></li>
+                    <li<?=($this->id=='site' && $this->action->id=='contacts')?' class="active"':'';?>><a href="/site/contacts/">контакты</a></li>
                 </ul>
             </nav>
             <!-- add class="select" -->
-            <div class="enter-box">
+            <div class="enter-box<?=(yii::app()->user->getId())?' select':'';?>">
                 <div class="personal-ico">
-                    <a href="#">
+                    <a href="/cabinet/">
                         <img src="/images/personal-ico1.jpg" width="40" height="40" alt="imge description" />
                     </a>
                 </div>
@@ -56,6 +56,7 @@
     </div>
 </section>
     <div id="main">
+        <? if($this->id!='cabinet'){?>
         <aside id="sidebar">
             <div class="ad">
                 <a href="#">
@@ -273,6 +274,7 @@
                     </ul>
                 </div>
             </div>
+        <?}?>
         <?=$content;?>
         </section>
     </div>
@@ -290,17 +292,17 @@
         <a href="#" class="btn-close"><i class="icon-cancel"></i></a>
         <article class="enter-block">
             <h2>вход</h2>
-            <form action="#" class="article-form">
+            <form action="/site/login" class="article-form" method="post">
                 <div class="row">
-                    <input type="text" placeholder="логин">
+                    <input type="text" id="LoginForm_email" name="LoginForm[email]" placeholder="email">
                 </div>
                 <div class="row">
-                    <input type="password" placeholder="пароль">
+                    <input type="password" id="LoginForm_password" name="LoginForm[password]" placeholder="пароль">
                 </div>
                 <div class="remember-link"><a href="#" id="forget-link">я забыл пароль</a></div>
                 <div class="row">
                     <label class="check-label">
-                        <input type="checkbox" checked="checked">
+                        <input type="checkbox" id="LoginForm_rememberMe" name="LoginForm[rememberMe]" value="1">
                         <span class="text">Запомнить</span>
                     </label>
                     <button class="btn alignright"><strong>войти</strong></button>
