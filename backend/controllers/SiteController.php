@@ -13,7 +13,7 @@ class SiteController extends BackController
      */
     public function actionIndex()
     {
-        $this->redirect(array('/purchase'));
+        $this->redirect(array('/user'));
     }
 
     /**
