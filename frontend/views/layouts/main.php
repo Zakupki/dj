@@ -25,7 +25,7 @@
                     <li class="active"><a href="/">главная</a></li>
                     <li><a href="/article/">Почитать</a></li>
                     <li><a href="#">афиша</a></li>
-                    <li><a href="#">хроника</a></li>
+                    <li><a href="/chronicle/">хроника</a></li>
                     <li><a href="#">музыка</a></li>
                     <li><a href="#">стиль</a></li>
                     <li><a href="#">техника</a></li>
@@ -56,7 +56,225 @@
     </div>
 </section>
     <div id="main">
+        <aside id="sidebar">
+            <div class="ad">
+                <a href="#">
+                    <img src="/images/ad2.jpg" width="200" height="400" alt="image description">
+                </a>
+            </div>
+            <div class="ad small-width">
+                <a href="#">
+                    <img src="/images/ad7.jpg" width="200" height="480" alt="image description">
+                </a>
+            </div>
+            <div class="social-tab">
+                <ul class="tab-nav">
+                    <li class="active"><a href="#">facebook</a></li>
+                    <li class="vk"><a href="#">vk</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab active">
+                        <div class="facebook-box">
+                            <a href="#">
+                                <img src="/images/facebook_box.jpg" width="178" height="419" alt="image description">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tab">
+                        <div class="facebook-box">
+                            <a href="#">
+                                <img src="/images/facebook_box.jpg" width="178" height="425" alt="image description">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ad">
+                <a href="#">
+                    <img src="/images/ad3.jpg" width="200" height="400" alt="image description">
+                </a>
+            </div>
+            <div class="ad">
+                <a href="#">
+                    <img src="/images/ad4.jpg" width="200" height="400" alt="image description">
+                </a>
+            </div>
+            <div class="ad">
+                <a href="#">
+                    <img src="/images/ad7.jpg" width="200" height="480" alt="image description">
+                </a>
+            </div>
+            <article class="box music-box side-music">
+                <h2 class="title-text"><a href="#">звуки</a><i class="icon-right-dir"></i></h2>
+                <ul class="music-list">
+                    <li>
+                        <div class="photo">
+                            <a href="#">
+                                <img src="/images/img13.jpg" width="140" height="140" alt="image description">
+                            </a>
+                        </div>
+                        <h3><a href="#">Francis Harris</a></h3>
+                        <p>You Can Always Leave</p>
+                        <ul class="star">
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="photo">
+                            <a href="#">
+                                <img src="/images/img15.jpg" width="140" height="140" alt="image description">
+                            </a>
+                        </div>
+                        <h3><a href="#">Egyptrixx</a></h3>
+                        <p>A/B Til Infinity</p>
+                        <ul class="star">
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="photo">
+                            <a href="#">
+                                <img src="/images/img17.jpg" width="140" height="140" alt="image description">
+                            </a>
+                        </div>
+                        <h3><a href="#">Various Artists</a></h3>
+                        <p>Feral Grind</p>
+                        <ul class="star">
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li><i class="icon-star-filled"></i></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="photo">
+                            <a href="#">
+                                <img src="/images/img16.jpg" width="140" height="140" alt="image description">
+                            </a>
+                        </div>
+                        <h3><a href="#">Indigo</a></h3>
+                        <p>Storm</p>
+                        <ul class="star">
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li><i class="icon-star-filled"></i></li>
+                            <li><i class="icon-star-filled"></i></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="photo">
+                            <a href="#">
+                                <img src="/images/img18.jpg" width="140" height="140" alt="image description">
+                            </a>
+                        </div>
+                        <h3><a href="#">7 Days of Funk</a></h3>
+                        <p>7 Days of Funk</p>
+                        <ul class="star">
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="photo">
+                            <a href="#">
+                                <img src="/images/img14.jpg" width="140" height="140" alt="image description">
+                            </a>
+                        </div>
+                        <h3><a href="#">Optimo</a></h3>
+                        <p>Dark Was the Night</p>
+                        <ul class="star">
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                            <li class="full"><i class="icon-star-filled"></i></li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+            <div class="ad small-width">
+                <a href="#">
+                    <img src="/images/ad4.jpg" width="200" height="400" alt="image description">
+                </a>
+            </div>
+        </aside>
+        <section id="content">
+            <div class="header-box">
+                <strong class="logo">
+                    <a href="#">DJ LIVING &amp; BREATHING DANCE MUSIC</a>
+                </strong>
+                <div class="gallery">
+                    <ul class="gmask">
+                        <li>
+                            <img src="/images/personal-ico2.jpg" width="130" height="130" alt="image description">
+                            <div class="description">
+                                <h2>Roy Davis</h2>
+                                <p>Этот человек излучает вдохновение, как для своих коллег, так и для восторженных подражателей» ПитТонг, весна 2009 Свежие и яркие звуки электронной музыки когда-то соблазнили шестнадцатилетнего любителя гранжа Джеймса Забиелу на покупку первой пары примитивных вертушек. Промотаем эту историю вперёд...</p>
+                            </div>
+                        </li>
+                        <li class="active">
+                            <img src="/images/personal-ico2.jpg" width="130" height="130" alt="image description">
+                            <div class="description">
+                                <h2>Roy Davis</h2>
+                                <p>2Этот человек излучает вдохновение, как для своих коллег, так и для восторженных подражателей» ПитТонг, весна 2009 Свежие и яркие звуки электронной музыки когда-то соблазнили шестнадцатилетнего любителя гранжа Джеймса Забиелу на покупку первой пары примитивных вертушек. Промотаем эту историю вперёд...</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="/images/personal-ico2.jpg" width="130" height="130" alt="image description">
+                            <div class="description">
+                                <h2>Roy Davis</h2>
+                                <p>3Этот человек излучает вдохновение, как для своих коллег, так и для восторженных подражателей» ПитТонг, весна 2009 Свежие и яркие звуки электронной музыки когда-то соблазнили шестнадцатилетнего любителя гранжа Джеймса Забиелу на покупку первой пары примитивных вертушек. Промотаем эту историю вперёд...</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="/images/personal-ico2.jpg" width="130" height="130" alt="image description">
+                            <div class="description">
+                                <h2>Roy Davis</h2>
+                                <p>4Этот человек излучает вдохновение, как для своих коллег, так и для восторженных подражателей» ПитТонг, весна 2009 Свежие и яркие звуки электронной музыки когда-то соблазнили шестнадцатилетнего любителя гранжа Джеймса Забиелу на покупку первой пары примитивных вертушек. Промотаем эту историю вперёд...</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="/images/personal-ico2.jpg" width="130" height="130" alt="image description">
+                            <div class="description">
+                                <h2>Roy Davis</h2>
+                                <p>5Этот человек излучает вдохновение, как для своих коллег, так и для восторженных подражателей» ПитТонг, весна 2009 Свежие и яркие звуки электронной музыки когда-то соблазнили шестнадцатилетнего любителя гранжа Джеймса Забиелу на покупку первой пары примитивных вертушек. Промотаем эту историю вперёд...</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="pagination">
+                        <li class="active">
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">2</a>
+                        </li>
+                        <li>
+                            <a href="#">3</a>
+                        </li>
+                        <li>
+                            <a href="#">4</a>
+                        </li>
+                        <li>
+                            <a href="#">5</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         <?=$content;?>
+        </section>
     </div>
 </div>
 </div>

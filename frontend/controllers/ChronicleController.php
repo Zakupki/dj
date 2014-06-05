@@ -1,6 +1,6 @@
 <?php
 
-class ArticleController extends FrontController
+class ChronicleController extends FrontController
 {
     public function init()
     {
