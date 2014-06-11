@@ -37,7 +37,7 @@ class Article extends BaseActiveRecord
             'attach' => array(
                 'class' => 'common.components.FileAttachBehavior',
                 'imageAttributes' => array(
-                    'image_id',
+                    'image_id'
                 ),
                 'fileAttributes' => array(
                 ),
@@ -76,7 +76,6 @@ class Article extends BaseActiveRecord
             array('image_id', 'file', 'types' => File::getAllowedExtensions(), 'allowEmpty' => true, 'on' => 'upload'),
             array('user_id', 'exist', 'className' => 'User', 'attributeName' => 'id'),
             array('author_id', 'exist', 'className' => 'User', 'attributeName' => 'id'),
-        
             array('id, title, image_id, user_id, author_id, detail_text, rate, date_create, tags, sort, status', 'safe', 'on' => 'search'),
         ));
     }

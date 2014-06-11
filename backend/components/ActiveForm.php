@@ -81,8 +81,11 @@ class ActiveForm extends TbActiveForm
 
         ob_start();
         echo $this->fileFieldRow($model, $attribute, $htmlOptions);
+
+        $tmp = $attribute;
+
         echo $this->hiddenField($model, $attribute, array(
-            'id' => CHtml::getIdByName(CHtml::resolveName($model, $tmp = $attribute)).'_current',
+            'id' => CHtml::getIdByName(CHtml::resolveName($model, $tmp)).'_current',
             'name' => (isset($htmlOptions['name']) ? $htmlOptions['name'] : CHtml::activeName($model, $attribute)),
         ));
 

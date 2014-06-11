@@ -20,10 +20,10 @@
 
     <?php echo $form->textFieldRow($model, 'title', array('class' => 'span9', 'maxlength' => 255)); ?>
     <?php echo $form->fileUploadRow($model, 'image_id', 'image'); ?>
-    <?php echo $form->dropDownListRow($model, 'user_id', array()); ?>
-    <?php echo $form->dropDownListRow($model, 'author_id', array()); ?>
+    <?php echo $form->dropDownListRow($model, 'user_id', CHtml::listData(User::model()->findAll(),'id','email')); ?>
+    <?php echo $form->dropDownListRow($model, 'author_id', CHtml::listData(User::model()->findAll(),'id','email')); ?>
     <?php echo $form->textAreaRow($model, 'detail_text', array('rows' => 5, 'cols' => 50, 'class' => 'span9')); ?>
-    <?php echo $form->textFieldRow($model, 'rate', array('class' => 'span9')); ?>
+    <?php echo $form->dropDownListRow($model, 'rate', CHtml::listData(array(0=>array('id'=>1,'title'=>1),1=>array('id'=>2,'title'=>2),2=>array('id'=>3,'title'=>3),3=>array('id'=>4,'title'=>4),4=>array('id'=>5,'title'=>5)),'id','title'),array('class' => 'span1')); ?>
     <?php echo $form->textFieldRow($model, 'date_create', array('class' => 'span2')); ?>
     <?php $this->widget('backend.extensions.calendar.SCalendar', array(
         'inputField' => CHtml::activeId($model, 'date_create'),
