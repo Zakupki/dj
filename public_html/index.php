@@ -3,8 +3,8 @@
     die('Сайт временно не доступен.');*/
 
 if($_SERVER['REMOTE_ADDR']=='193.93.78.1062'){
-    error_reporting(1);
-    ini_set('display_errors', 1);
+    error_reporting(0);
+    ini_set('display_errors', 0);
     error_reporting(E_ALL ^ E_NOTICE);
     ini_set('error_reporting', E_ALL ^ E_NOTICE);
 }else{

@@ -10,10 +10,12 @@ class ArticleController extends FrontController
 
     public function actionIndex()
     {
-        $this->render('index');
+        $articles=Article::model()->findAll();
+        $this->render('index',array('articles'=>$articles));
     }
-    public function actionView()
+    public function actionView($id)
     {
-        $this->render('view');
+        $article=Article::model()->findByPk($id);
+        $this->render('view',array('article'=>$article));
     }
 }

@@ -1,7 +1,9 @@
 <?php
-error_reporting(1);
-@ini_set('display_errors', 1);
-@ini_set('error_reporting', E_ALL);
+error_reporting(0);
+ini_set('display_errors', 0);
+define("YII_ENBLE_ERROR_HANDLER",false);
+define("YII_ENBLE_EXCEPTION_HANDLER",false);
+error_reporting(E_ALL ^ E_WARNING);
 
 @include(dirname(__FILE__).'/../init.php');
 

@@ -1,7 +1,7 @@
 <section class="twocolumns">
 <div class="twocolumns-holder scroll-column">
     <div class="post">
-        <h1>Shackleton возвращается к работе</h1>
+        <h1><?=$article->title;?></h1>
         <div class="social-holder">
             <ul class="social-network">
                 <li>
@@ -27,17 +27,18 @@
             </a>
         </div>
         <div class="content">
-            <p>Прошлый год для Шеклтона (<strong><mark>Sam Shackleton</mark></strong>) прошел довольно тихо. О новых релизах Сэма ничего не было слышно. Но, как докладывает Juno Plus, он начнет 2014-й новой EP, которую выпустит на собственном лейбле Woe To The Septic Heart. Согласно пресс-релизу, Freezing Opening Thawing включает три трека и продолжает славную традицию Шеклтона «уход от манипуляций с сэмплами в пользу синтеза» с добавлением фирменного перкуссионного стиля «психоделической грани». Отсюда следуют две EP Music for the Quiet Hour / The Drawbar Organ, вышедшие в апреле 2012 года, которые очень хвалили.</p>
-            <p>Художественное оформление для этого релиза подготовил Зик Клоу (<strong><mark>Zeke Clough</mark></strong>), чьи отношения с Шеклтоном уходят корнями в эпоху лейбла Skull Disco (прим. Сэм закрыл лейбл в 2008 году).</p>
+            <!--<p>Прошлый год для Шеклтона (<strong><mark>Sam Shackleton</mark></strong>) прошел довольно тихо. О новых релизах Сэма ничего не было слышно. Но, как докладывает Juno Plus, он начнет 2014-й новой EP, которую выпустит на собственном лейбле Woe To The Septic Heart. Согласно пресс-релизу, Freezing Opening Thawing включает три трека и продолжает славную традицию Шеклтона «уход от манипуляций с сэмплами в пользу синтеза» с добавлением фирменного перкуссионного стиля «психоделической грани». Отсюда следуют две EP Music for the Quiet Hour / The Drawbar Organ, вышедшие в апреле 2012 года, которые очень хвалили.</p>
+            <p>Художественное оформление для этого релиза подготовил Зик Клоу (<strong><mark>Zeke Clough</mark></strong>), чьи отношения с Шеклтоном уходят корнями в эпоху лейбла Skull Disco (прим. Сэм закрыл лейбл в 2008 году).</p>-->
+            <p><?=$article->detail_text;?></p>
         </div>
-        <div class="tracklist-box">
+        <!--<div class="tracklist-box">
             <strong class="title">Tracklist:</strong>
             <ul class="tracklist">
                 <li>01. Freezing Opening Thawing</li>
                 <li>02. White Flower with Silvery Eye</li>
                 <li>03. Silver Keys</li>
             </ul>
-        </div>
+        </div>-->
         <div class="music-player-box">
             <img src="/images/music-playlist.jpg" width="480" height="156" alt="image description">
         </div>
@@ -78,7 +79,7 @@
                 </p>
             </div>
         </article>
-        <div class="some-title"><strong>sam Shackleton, Abstract, Freezing Opening Thawing, Skull Disco, Woe To The Septic Heart, Zeke Clough, experimental.</strong></div>
+        <div class="some-title"><strong><?=$article->tags;?></strong></div>
         <div class="date-box">
             <span class="date">25.12.2013</span>
             <ul class="social-network">

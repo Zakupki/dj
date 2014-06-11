@@ -1,1 +1,3 @@
-<a href="/article/1/">article 1</a>
+<? foreach($articles as $article){?>
+<a href="/article/<?=$article->id;?>">article <?=$article->id;?></a>
+<?}?>

@@ -137,7 +137,7 @@ $config = array(
 
     'params' => array(
         // relative to Yii::app()->basePath/..
-        'webRoot' => 'newzakupki.reactor.ua',
+        'webRoot' => 'public_html',
         'adminEmail' => 'info@zakupki-online.ua',
         'noreply' => 'info@zakupki-online.com',
         'cacheDuration' => 3600,
