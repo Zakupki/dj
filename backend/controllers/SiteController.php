@@ -4,7 +4,7 @@ class SiteController extends BackController
 {
     public function actionAdmin()
     {
-        $this->redirect(array('/purchase'));
+        $this->redirect(array('/article'));
     }
 
     /**
@@ -13,7 +13,7 @@ class SiteController extends BackController
      */
     public function actionIndex()
     {
-        $this->redirect(array('/user'));
+        $this->redirect(array('/article'));
     }
 
     /**

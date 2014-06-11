@@ -35,6 +35,8 @@ return array (
     'Allowed path characters are: {characters}' => 'Разрешенные символы в путях {characters}',
     'Alternative Title' => 'Альтернативный заголовок',
     'Average Company Number' => 'Среднее количество поставщиков',
+    'Article' => 'Статья',
+    'Articles' => 'Статьи',
     'Big' => 'Большой',
     'Cannot resolve site url' => 'Не могу определить ссылку сайта',
     'Category' => 'Категория',
