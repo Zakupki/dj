@@ -10,8 +10,24 @@
     <script type="text/javascript" src="/js/form.js"></script>
     <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
     <!--[if lte IE 9]><script type="text/javascript" src="/js/pie.js"></script><![endif]-->
+
+    <!-- Put this script tag to the <head> of your page -->
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?113"></script>
+    <script type="text/javascript">
+        VK.init({apiId: 4408333, onlyWidgets: true});
+    </script>
 </head>
 <body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&appId=1385271618390936&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
 <div id="wrapper">
 <div class="w1">
 <div class="ad-panel">

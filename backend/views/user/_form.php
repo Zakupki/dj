@@ -20,8 +20,11 @@
         <div class="span6">
             <?php echo $form->textFieldRow($model, 'first_name', array('class' => 'span4', 'maxlength' => 64)); ?>
             <?php echo $form->textFieldRow($model, 'last_name', array('class' => 'span4', 'maxlength' => 64)); ?>
+            <?php echo $form->fileUploadRow($model, 'image_id', 'image'); ?>
             <?php echo $form->textFieldRow($model, 'email', array('class' => 'span4', 'maxlength' => 64)); ?>
+            <?php echo $form->textFieldRow($model, 'profession', array('class' => 'span4', 'maxlength' => 128)); ?>
             <?php echo $form->passwordFieldRow($model, 'password', array('class' => 'span4', 'value' => '', 'autocomplete' => 'off')); ?>
+            <?php echo $form->textAreaRow($model, 'detail_text', array('rows' => 5, 'cols' => 50, 'class' => 'span9')); ?>
             <?php echo $form->textFieldRow($model, 'sort', array('class' => 'span2')); ?>
             <?php /*if($model->type == User::ADMIN) {
     	 echo $form->dropDownListRow($model, 'authItems', User::getRoleList(), array(

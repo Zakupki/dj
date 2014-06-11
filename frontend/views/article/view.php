@@ -5,25 +5,25 @@
         <div class="social-holder">
             <ul class="social-network">
                 <li>
-                    <a href="#">
-                        <img src="/images/ico-facebook1.png" width="73" height="20" alt="image description">
-                    </a>
+                    <div class="fb-like" data-href="<?=$article->getUrl();?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
                 </li>
                 <li>
-                    <a href="#">
-                        <img src="/images/ico-vk1.png" width="95" height="20" alt="image description">
-                    </a>
+                    <div id="vk_like"></div>
+                    <script type="text/javascript">
+                        VK.Widgets.Like("vk_like", {type: "mini", height: 20});
+                    </script>
                 </li>
                 <li>
-                    <a href="#">
-                        <img src="/images/ico-twitter1.png" width="76" height="20" alt="image description">
-                    </a>
+                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                 </li>
             </ul>
         </div>
         <div class="photo">
             <a href="#">
-                <img src="/images/img25.jpg" width="480" height="480" alt="image description">
+                <? if(isset($article->image)){
+                    echo $article->image->asHtmlImage($article->title);
+                }?>
             </a>
         </div>
         <div class="content">
@@ -39,64 +39,66 @@
                 <li>03. Silver Keys</li>
             </ul>
         </div>-->
-        <div class="music-player-box">
+        <!--<div class="music-player-box">
             <img src="/images/music-playlist.jpg" width="480" height="156" alt="image description">
         </div>
         <div class="date-heading">
             <strong>Дата выхода<br />Freezing Opening Thawing — 20 января.</strong>
-        </div>
+        </div>-->
         <div class="rating-holder">
             <div class="r-heading">
-                <a href="#">
+                <!--<a href="#">
                     <img src="/images/logo2.png" width="85" height="20" alt="image description">
-                </a>
+                </a>-->
             </div>
             <dl class="rating-star">
                 <dt>Редакционный рейтинг</dt>
                 <dd>
                     <ul class="star big-star">
+                        <? for($i=1;$i<=5;$i++){?>
+                        <li<?=($i>$article->rate)?'':' class="full"';?>><i class="icon-star-filled"></i></li>
+                        <?}?>
+                        <!--<li class="full"><i class="icon-star-filled"></i></li>
                         <li class="full"><i class="icon-star-filled"></i></li>
                         <li class="full"><i class="icon-star-filled"></i></li>
-                        <li class="full"><i class="icon-star-filled"></i></li>
-                        <li class="full"><i class="icon-star-filled"></i></li>
-                        <li><i class="icon-star-filled"></i></li>
+                        <li><i class="icon-star-filled"></i></li>-->
                     </ul>
                 </dd>
             </dl>
         </div>
+        <? if(isset($article->author)){?>
         <article class="personal-box">
-            <img src="/images/personal-ico3.jpg" width="90" height="90" alt="image description">
+            <?
+            if(isset($article->author->image)){
+                echo $article->author->image->asHtmlImage($article->author->first_name);
+            }
+            ?>
+            <!--<img src="/images/personal-ico3.jpg" width="90" height="90" alt="image description">-->
             <div class="description">
-                <span class="profession">критик</span>
-                <h3>Костя бударин</h3>
+                <span class="profession"><?=$article->author->profession;?></span>
+                <h3><?=$article->author->first_name;?> <?=$article->author->last_name;?></h3>
                 <p>
-                    <strong>Lorem ipsum dolor adipiscing elit.</strong><br />
-                    Sagittis magna non tincidunt magna non tincidunt euismod.<br />
-                    <strong>Lorem ipsum dolor sit ame adipiscing elit.</strong><br />
-                    psum dolor sit amet, consectetur adipiscing elit. sagittis.<br />
-                    <strong>Lorem ipsum consectetur adipiscing elit</strong><br />
-                    psum dolor sit amet, consectetur adipiscing elit. sagittis.
+                    <?=nl2br($article->author->detail_text);?>
                 </p>
             </div>
         </article>
+        <?}?>
         <div class="some-title"><strong><?=$article->tags;?></strong></div>
         <div class="date-box">
             <span class="date">25.12.2013</span>
             <ul class="social-network">
                 <li>
-                    <a href="#">
-                        <img src="/images/ico-facebook1.png" width="73" height="20" alt="image description">
-                    </a>
+                    <div class="fb-like" data-href="<?=$article->getUrl();?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
                 </li>
                 <li>
-                    <a href="#">
-                        <img src="/images/ico-vk1.png" width="95" height="20" alt="image description">
-                    </a>
+                    <div id="vk_like2"></div>
+                    <script type="text/javascript">
+                        VK.Widgets.Like("vk_like2", {type: "mini", height: 20});
+                    </script>
                 </li>
                 <li>
-                    <a href="#">
-                        <img src="/images/ico-twitter1.png" width="76" height="20" alt="image description">
-                    </a>
+                    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                 </li>
             </ul>
         </div>

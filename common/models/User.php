@@ -270,7 +270,7 @@ class User extends BaseActiveRecord
             array('password', 'length', 'min' => 6),
             array('password', 'required', 'on' => 'create'),
             array('display_name', 'length', 'max' => 64),
-            array('last_name, activation_code, retrieve_code, first_name, image_id, detail_text, sort,date_create', 'safe'),
+            array('last_name, activation_code, retrieve_code, first_name, image_id, detail_text, sort,date_create, profession', 'safe'),
             array('image_id', 'file', 'types' => File::getAllowedExtensions(), 'allowEmpty' => true, 'on' => 'upload'),
             array('id, login, email, display_name, activation_code, retrieve_code, last_name, first_name, status', 'safe', 'on' => 'search'),
         );
@@ -303,6 +303,7 @@ class User extends BaseActiveRecord
     {
         return array(
             'id' => 'ID',
+            'profession' => 'Profession',
             'login' => Yii::t('backend', 'Login'),
             'password' => Yii::t('backend', 'Password'),
             'email' => Yii::t('backend', 'Email'),
@@ -320,6 +321,7 @@ class User extends BaseActiveRecord
             'phone' => Yii::t('backend', 'Phone'),
             'date_create' => Yii::t('backend', 'Date Register'),
             'address' => Yii::t('backend', 'Address'),
+            'image_id' => Yii::t('backend', 'Image'),
             'city' => Yii::t('backend', 'City')
         );
     }
