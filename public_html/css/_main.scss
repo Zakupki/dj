@@ -52,6 +52,10 @@
 	font-style: normal;
 }
 
+img {
+	vertical-align: top;
+}
+
  [class^="icon-"]:before, [class*=" icon-"]:before {
 	font-family: $font-ico;
 	font-style: normal;
@@ -101,12 +105,8 @@ h2,
 h3,
 h4,
 h5,
-h6,
-strong {
+h6{
 	font-family: $font-bold;
-}
-em {
-	font-family: $font-italic;
 }
 body {
 	margin: 0;
@@ -207,7 +207,9 @@ input:focus::-moz-placeholder {
 	}
 }
 #nav {
-	font: 12px/40px $font-bold;
+	font-size: 12px;
+	line-height: 40px;
+	font-weight: bold;
 	text-transform: uppercase;
 	float: left;
 	ul {
@@ -352,7 +354,7 @@ input:focus::-moz-placeholder {
 	}
 	.tab-content {
 		border: solid $border-blue;
-		border-width: 0 1px 1px;
+		border-width: 0 2px 2px;
 		padding: 20px 10px;
 		background: $background-white;
 	}
@@ -426,7 +428,10 @@ input:focus::-moz-placeholder {
 }
 .header-box {
 	overflow: hidden;
-	padding: 0 0 21px;
+	padding: 0 0 30px;
+}
+.header-box.padding1 {
+	padding-bottom: 83px;
 }
 .logo {
 	background: url($img-dir + 'logo.png') no-repeat;
@@ -462,21 +467,21 @@ input:focus::-moz-placeholder {
 		}
 		img {
 			float: left;
-			margin: 0 30px 0 0;
+			margin: 0 29px 0 0;
 			@include border-radius(65px);
 		}
 		.description {
 			overflow: hidden;
 			color: #868585;
 			padding: 6px 0 15px;
-			height: 82px;
+			height: 79px;
 		}
 		h2 {
 			color: $color-black;
 			font-size: 24px;
 			line-height: 26px;
 			text-transform: uppercase;
-			margin: 0 0 9px;
+			margin: 0 0 6px;
 		}
 		p {
 			margin: 0;
@@ -512,7 +517,7 @@ input:focus::-moz-placeholder {
 .twocolumns {
 	.col1 {
 		float: left;
-		width: 300px;
+		width: 320px;
 	}
 }
 .twocolumns:after {
@@ -529,15 +534,22 @@ input:focus::-moz-placeholder {
 	.p-holder {
 		overflow: hidden;
 	}
+	.p-holder.margin-l-40 {
+		margin-left: -40px;
+		padding-left: 40px;
+	}
 	&.chronicle-box {
 		width: 640px;
 	}
 	&.bill-box {
-		width: 298px;
+		width: 278px;
+		.title-text {
+			margin-bottom: 28px;
+		}
 	}
 	&.music-box {
 		width: 320px;
-		padding: 19px 20px 62px;
+		padding: 28px 20px 62px;
 	}
 	&.music-box.side-music {
 		width: auto;
@@ -546,9 +558,9 @@ input:focus::-moz-placeholder {
 		color: $color-light-dark1;
 	}
 	&.style-box {
-		padding: 0 0 32px;
+		padding: 0 0 22px;
 		.photo {
-			margin: 0 0 19px;
+			margin: 0 0 30px;
 			img {
 				display: block;
 				width: 100%;
@@ -557,14 +569,20 @@ input:focus::-moz-placeholder {
 		.content {
 			padding: 0 20px;
 		}
+		.title-text {
+			margin: 0 0 14px;
+		}
 		h3 {
-			font-size: 24px;
-			line-height: 26px;
+			font-size: 14px;
+			line-height: 20px;
+			color: #d83b2a;
 			margin: 0;
+			text-transform: uppercase;
 		}
 	}
 	&.alignleft.poster-box {
 		margin: 0 0 40px 34px;
+		padding: 0;
 	}
 	&.poster-box {
 		padding: 0 0 21px;
@@ -581,7 +599,8 @@ input:focus::-moz-placeholder {
 		}
 		.title-text {
 			float: left;
-			width: 189px;
+			width: 140px;
+			margin-top: 29px;
 		}
 		.p-holder {
 			overflow: hidden;
@@ -597,6 +616,7 @@ input:focus::-moz-placeholder {
 		.description {
 			overflow: hidden;
 			line-height: 14px;
+			padding-top: 28px;
 		}
 		.title-name {
 			overflow: hidden;
@@ -618,6 +638,7 @@ input:focus::-moz-placeholder {
 		width: 660px;
 		padding: 30px;
 		margin-right: -20px;
+		padding-bottom: 0;
 	}
 	&.publication-box.publication-width1 {
 		width: 1060px;
@@ -644,6 +665,11 @@ input:focus::-moz-placeholder {
 		padding: 39px 40px 137px;
 		margin: 0;
 	}
+	&.publication-box {
+		.title-text {
+			margin-bottom: 26px;
+		}
+	}
 }
 .box.alignleft,
 .ad.alignleft {
@@ -667,7 +693,7 @@ input:focus::-moz-placeholder {
 	}
 }
 .chronicle-list {
-	margin: 0 0 -48px;
+	margin: 0 0 -30px;
 	padding: 0;
 	list-style: none;
 	position: relative;
@@ -675,7 +701,7 @@ input:focus::-moz-placeholder {
 	li {
 		display: inline-block;
 		vertical-align: top;
-		margin: 0 17px 43px 0;
+		margin: 0 17px 35px 0;
 		width: 200px;
 	}
 	.photo {
@@ -710,6 +736,11 @@ input:focus::-moz-placeholder {
 .time {
 	display: block;
 	margin: 0 0 3px;
+	font-size: 13px;
+	line-height: 16px;
+	strong {
+		font-weight: bold;
+	}
 	mark {
 		color: $color-red;
 		background: none;
@@ -729,8 +760,7 @@ input:focus::-moz-placeholder {
 		}
 	}
 	&.size3 {
-		font-size: 24px;
-		line-height: 30px;
+		font: 14px/16px $main-font;
 		margin: 0;
 	}
 	&.position {
@@ -743,11 +773,20 @@ input:focus::-moz-placeholder {
 	margin: 0 0 40px;
 }
 .bll-list {
-	margin: 0 0 -31px;
+	margin: 0 0 -50px;
 	position: relative;
 	padding: 0;
 	list-style: none;
 	color: $color-light-dark2;
+	line-height: 16px;
+	.new-event {
+		font-size: 12px;
+		line-height: 16px;
+		color: #d83b2a;
+	}
+	.b-hidden {
+		display: none;
+	}
 	li {
 		margin: 0 0 40px;
 		overflow: hidden;
@@ -761,11 +800,13 @@ input:focus::-moz-placeholder {
 	}
 	.description {
 		overflow: hidden;
-		padding: 4px 0 0;
+		position: relative;
 	}
 	.title {
 		display: block;
 		margin: 0 0 10px;
+		font-size: 13px;
+		line-height: 16px;
 	}
 	p {
 		margin: 0;
@@ -774,18 +815,33 @@ input:focus::-moz-placeholder {
 .box.event-box {
 	margin: 0 0 0 -1px;
 }
+.box.event-box.padding-top1 {
+	padding-top: 70px;
+	position: relative;
+}
+.box.event-box.padding-top1:after {
+	content: '';
+	position: absolute;
+	height:70px;
+	width: 2px;
+	top: 0;
+	left: -2px;
+	background: #e9e9e9;
+}
 .event-box {
 	width: 200px;
 	position: relative;
 	padding: 0 0 40px;
 	.photo {
-		margin: 0 0 25px;
+		margin: 0 0 17px;
 		img {
 			vertical-align: top;
 		}
 	}
 	.content {
 		padding: 0 25px 0 40px;
+		height: 273px;
+		overflow: hidden;
 	}
 	h2 {
 		font-size: 20px;
@@ -798,7 +854,7 @@ input:focus::-moz-placeholder {
 		display: block;
 		text-transform: uppercase;
 		color: $color-light-grey1;
-		margin: 0 0 30px;
+		margin: 0 0 18px;
 	}
 	.time {
 		margin: 0;
@@ -813,15 +869,16 @@ input:focus::-moz-placeholder {
 }
 .event-box.width1 {
 	float: left;
-	width: 200px;
-	.content {
-		padding-right: 0;
-	}
+	width: 279px;
+	margin-left: -30px;
+	margin-right: -39px;
+	line-height: 16px;
+	padding-bottom: 60px;
 	h2 {
-		margin: 0 0 14px;
+		margin: 0 0 11px;
 	}
 	p {
-		margin: 0 0 14px;
+		margin: 0 0 21px;
 	}
 }
 .music-list {
@@ -834,14 +891,15 @@ input:focus::-moz-placeholder {
 		display: inline-block;
 		vertical-align: top;
 		width: 140px;
-		margin: 0 37px 22px 0;
+		margin: 0 37px 38px 0;
 	}
 	.photo {
-		margin: 0 0 5px;
+		margin: 0 0 13px;
 	}
 	h3 {
 		font-size: 12px;
 		line-height: 14px;
+		font: bold 12px/14px $main-font;
 		margin: 0;
 		a {
 			color: $color-light-dark2;
@@ -851,15 +909,23 @@ input:focus::-moz-placeholder {
 		margin: 0 0 4px;
 	}
 	&.alt-padding1 {
+		padding-top: 29px ;
 		padding-bottom: 18px;
 		.photo {
-			margin: 0 0 12px;
+			margin: 0 0 7px;
 		}
 		.time {
 			margin: 0;
 		}
 		li {
-			margin-bottom: 20px;
+			margin-bottom: 25px;
+		}
+	}
+	&.alt-space1 {
+		margin-right: -15px;
+		width: 855px;
+		> li {
+			margin: 0 28px 33px 0;
 		}
 	}
 }
@@ -869,6 +935,10 @@ input:focus::-moz-placeholder {
 	font-size: 13px;
 	line-height: 14px;
 	color: $star-grey;
+	&.size1 {
+		font-size: 16px;
+		line-height: 16px;
+	}
 	li {
 		float: left;
 		margin: 0 2px 0 0;
@@ -888,17 +958,29 @@ input:focus::-moz-placeholder {
 	float: left;
 	width: 349px;
 	margin: -40px 0 0 39px;
-	padding: 0 0 0 39px;
+	padding: 0 0 30px 41px;
 	position: relative;
 	list-style: none;
-	border-left: 2px solid $border-light-white;
+	line-height: 16px;
+	position: relative;
+	&:after {
+		content: '';
+		width: 2px;
+		height: 2px;
+		position: absolute;
+		top: 0;
+		left: -2px;
+		background: #f9f8f8;
+		padding-bottom: 9999px;
+		margin-bottom: -9999px;
+	}
 	.time {
 		margin: 0 0 -4px;
 		position: relative;
 	}
 	li {
 		overflow: hidden;
-		padding: 40px 0 0;
+		padding: 40px 0 2px;
 	}
 	img {
 		float: left;
@@ -906,16 +988,24 @@ input:focus::-moz-placeholder {
 	}
 	.description {
 		overflow: hidden;
-		padding: 0 0 1px;
+		padding: 0 0 3px;
 	}
 	h2 {
-		font-size: 12px;
-		line-height: 14px;
+		font-size: 14px;
+		line-height: 16px;
 		text-transform: uppercase;
-		margin: 0 0 15px;
+		margin: -2px 0 17px;
+		position: relative;
+		&.size1 {
+			font-size: 20px;
+			line-height: 25px;
+			a {
+				color: #d83b2a;
+			}
+		}
 	}
 	p {
-		margin: 0 0 14px;
+		margin: 0 0 19px;
 	}
 	&.block-list {
 		width: 800px;
@@ -945,7 +1035,7 @@ input:focus::-moz-placeholder {
 		font-size: 30px;
 		line-height: 36px;
 		text-transform: uppercase;
-		margin: 0 0 15px;
+		margin: 0 0 21px;
 	}
 	.photo {
 		margin: 0 0 30px;
@@ -956,6 +1046,9 @@ input:focus::-moz-placeholder {
 	.content {
 		p {
 			margin: 0 0 20px;
+		}
+		&.padding1 {
+			padding-bottom: 17px;
 		}
 	}
 	mark {
@@ -1003,7 +1096,7 @@ input:focus::-moz-placeholder {
 }
 .social-holder {
 	overflow: hidden;
-	padding: 0 0 20px;
+	padding: 0 0 36px;
 }
 .ico-list {
 	@include list-nulling();
@@ -1073,11 +1166,11 @@ input:focus::-moz-placeholder {
 .personal-box {
 	overflow: hidden;
 	background: #e9e9e9;
-	padding: 35px 20px 30px;
+	padding: 20px 57px 22px 23px;
 	font-size: 12px;
 	line-height: 16px;
 	color: $color-light-dark1;
-	margin: 0 0 25px;
+	margin: 0 0 20px;
 	img {
 		float: left;
 		margin: 0 20px 0 0;
@@ -1089,14 +1182,15 @@ input:focus::-moz-placeholder {
 	.profession {
 		display: block;
 		color: $color-light-grey2;
-		text-transform: uppercase;
 		margin: 0 0 3px;
+		font-size: 12px;
+		line-height: 14px;
 	}
 	h3 {
-		font-size: 12px;
+		font-size: 15px;
 		line-height: 16px;
 		text-transform: uppercase;
-		margin: 0 0 23px;
+		margin: 0 0 13px;
 	}
 	p {
 		margin: 0;
@@ -1219,15 +1313,19 @@ input:focus::-moz-placeholder {
 		}
 	}
 	&.width1.margin-bottom1 {
-		margin-bottom: 0;
+		margin-bottom: 20px;
 	}
 }
 .music-holder .box.music-box {
 	margin: 0 0 19px;
 }
+.music-holder .box.music-box.no-margin {
+	margin: 0;
+}
 .btn {
 	font-size: 14px;
 	line-height: 16px;
+	font-family: $font-regular;
 	padding: 17px 0;
 	margin: 0;
 	display: block;
@@ -1313,10 +1411,13 @@ input:focus::-moz-placeholder {
 .change-box {
 	padding: 0 0 30px;
 	overflow: hidden;
+	position: relative;
 }
 .personal-photo {
-	float: left;
-	position: relative;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	position: absolute;
 	.close {
 		font-size: 25px;
 		line-height: 25px;
@@ -1326,15 +1427,33 @@ input:focus::-moz-placeholder {
 		right: 2px;
 		z-index: 5;
 	}
-	img {
-		float: left;
+	.p-content {
+		width: 160px;
+		height: 160px;
+		overflow: hidden;
 		@include border-radius(80px);
+	}
+	.p-holder {
+		display: table;
+		width: 100%;
+		height: 100%;
+	}
+	.p-frame {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	img {
+		width: 100%;
 	}
 }
 .registration-form {
 	float: right;
 	width: 520px;
 	color: $color-black;
+	select {
+		float: left;
+		width: 80px;
+	}
 	.row {
 		overflow: hidden;
 		padding: 0 0 20px;
@@ -1355,7 +1474,7 @@ input:focus::-moz-placeholder {
 		height: 38px;
 		padding: 0 20px;
 		margin: 0;
-		font: 18px/38px $font-bold;
+		font: 18px/38px $main-font;
 		color: $color-black;
 		background: none;
 		border: 1px solid $border-black;
@@ -1367,7 +1486,7 @@ input:focus::-moz-placeholder {
 		width: 198px;
 		margin: 0 0 0 20px;
 	}
-	select {
+	.column2 select {
 		float: left;
 		width: 90px;
 	}
@@ -1420,7 +1539,7 @@ input:focus::-moz-placeholder {
 }
 .report-list {
 	margin: 0;
-	padding: 30px 0 157px;
+	padding: 30px 0 163px;
 	list-style: none;
 	.photo {
 		padding: 0 0 8px;
@@ -1433,8 +1552,7 @@ input:focus::-moz-placeholder {
 		margin: 0;
 	}
 	h3 {
-		font-size: 12px;
-		line-height: 16px;
+		font: bold 12px/16px $main-font;
 		margin: 0;
 	}
 	li {
@@ -1634,8 +1752,7 @@ input:focus::-moz-placeholder {
 		margin: 0;
 	}
 	h3 {
-		font-size: 12px;
-		line-height: 16px;
+		font: bold 12px/16px $main-font;
 		margin: 0;
 	}
 }
@@ -1685,6 +1802,7 @@ input:focus::-moz-placeholder {
 	h3 {
 		font-size: 12px;
 		line-height: 16px;
+		font: bold 12px/16px $main-font;
 		margin: 0;
 	}
 }
@@ -1699,6 +1817,11 @@ input:focus::-moz-placeholder {
 		width: 380px;
 		padding: 0 20px 0 0;
 	}
+	.col.width-all {
+		padding: 0 40px 0 0;
+		width: auto;
+		float: none;
+	}
 	h1 {
 		font-size: 30px;
 		line-height: 32px;
@@ -1709,6 +1832,7 @@ input:focus::-moz-placeholder {
 		font-size: 14px;
 		line-height: 20px;
 		margin: 0;
+		font-family: $main-font;
 	}
 	.c-box {
 		margin: 0 0 27px;
@@ -1747,13 +1871,13 @@ input:focus::-moz-placeholder {
 .column1 {
 	float: left;
 	width: 640px;
-	margin: 0;
+	margin: 0 0 40px;
 }
 .column2 {
 	display: inline-block;
 	vertical-align: top;
 	width: 200px;
-	margin: 0 0 0 40px;
+	margin: 0 0 40px 40px;
 }
 .title-select {
 	float: left;
@@ -1767,6 +1891,11 @@ input:focus::-moz-placeholder {
 	list-style: none;
 	width: 112%;
 	color: $color-light-dark2;
+	.title {
+		display: block;
+		font: 24px/24px $font-bold;
+		text-transform: uppercase;
+	}
 	> li {
 		width: 300px;
 		display: inline-block;
@@ -1783,8 +1912,7 @@ input:focus::-moz-placeholder {
 	}
 	.logo-block {
 		float: left;
-		width: 110px;
-		padding: 5px 0 0;
+		width: 122px;
 		img {
 			float: left;
 		}
@@ -1812,6 +1940,7 @@ input:focus::-moz-placeholder {
 		@include list-nulling();
 		width: 40px;
 		line-height: 18px;
+		font-family: $font-regular;
 		li {
 			width: 100%;
 			& + li {
@@ -1862,7 +1991,7 @@ input:focus::-moz-placeholder {
 }
 .place-detail {
 	overflow: hidden;
-	padding: 0 0 20px;
+	padding: 0 0 31px;
 	font-size: 14px;
 	line-height: 20px;
 	.place-map {
@@ -1875,10 +2004,21 @@ input:focus::-moz-placeholder {
 	.description {
 		overflow: hidden;
 	}
-	.place-logo {
+	.visual-col {
 		float: right;
-		img {
-			float: left;
+		width: 120px;
+		padding: 4px 0 0 10px;
+		.v-photo {
+			margin: 0 0 16px;
+			img {
+				display: block;
+			}
+		}
+		.star-title {
+			font-size: 11px;
+			line-height: 14px;
+			display: block;
+			margin: 0 0 4px;
 		}
 	}
 	.title {
@@ -1903,25 +2043,27 @@ input:focus::-moz-placeholder {
 	}
 }
 .gallery4 {
-	padding: 0 0 24px;
+	padding: 6px 0 24px;
 	.gmask {
-		margin: 0 0 29px;
+		margin: 0 0 22px;
 		padding: 0;
 		list-style: none;
 		position: relative;
-		height: 470px;
 		li {
 			display: none;
 			position: absolute;
+			top: 0;
+			left: 0;
 			width: 100%;
 			text-align: center;
 			z-index: 2;
 			img {
-				margin: 0 auto;
+				width: 100%;
 				display: block;
 			}
 			&.active {
 				display: block;
+				position: relative;
 				z-index: 3;
 			}
 		}
@@ -1956,7 +2098,7 @@ input:focus::-moz-placeholder {
 }
 .blockquote-box {
 	overflow: hidden;
-	padding: 35px 0 60px;
+	padding: 20px 0 11px;
 	margin: 0;
 	.col-visual {
 		float: left;
@@ -1970,14 +2112,17 @@ input:focus::-moz-placeholder {
 		}
 		.name {
 			display: block;
-			text-transform: uppercase;
+			font-size: 14px;
+			line-height: 16px;
+			text-transform: capitalize;
 		}
 	}
 	.b-photo {
-		margin: 0 0 8px;
+		margin: 0 0 15px;
 		overflow: hidden;
 		img {
 			float: left;
+			width: 100%;
 		}
 	}
 	.description {
@@ -1999,6 +2144,138 @@ input:focus::-moz-placeholder {
 			overflow: hidden;
 			margin: 0 0 20px;
 		}
+	}
+}
+.meta-teg {
+	font-size: 12px;
+	line-height: 28px;
+	margin: 0;
+	padding: 0 0 20px;
+	list-style: none;
+	overflow: hidden;
+}
+.meta-teg li {
+	float: left;
+	margin: 0 6px 5px 0;
+}
+.meta-teg a {
+	float: left;
+	color: #333;
+	text-decoration: none;
+	padding: 0 13px;
+	border: 1px solid #999;
+	border-radius: 14px;
+}
+.meta-teg a:hover {
+	text-decoration: underline;
+}
+.box.width-all-content {
+	width: auto;
+}
+.publication-list.no-border {
+	margin: 0 0 -20px;
+	padding: 0;
+	position: relative;
+}
+.publication-list.no-border li + li,
+.publication-list.no-border li {
+	padding: 0 0 38px;
+}
+.publication-list.no-border:after {
+	display: none;
+}
+.publication-list.width-all {
+	width: 100%;
+}
+.margin-bottom10 {
+	margin-bottom: 10px;
+}
+.margin-bottom40 {
+	margin-bottom: 40px;
+}
+.twocolumns-holder.width-only-content {
+	padding-right: 40px;
+}
+.only-small {
+	position: absolute !important;
+	left: -9999px;
+}
+.places-list {
+	width: 910px;
+	margin: 0 -50px 0 -20px;
+	position: relative;
+	padding: 0;
+	list-style: none;
+	overflow: hidden;
+	font-size: 12px;
+	line-height: 14px;
+	li {
+		display: inline-block;
+		vertical-align: top;
+		width: 425px;
+		margin: 0 27px 30px 0;
+	}
+	.photo {
+		overflow: hidden;
+		a,
+		img {
+			float: left;
+			width: 100%;
+		}
+	}
+	.content {
+		padding: 0 20px;
+	}
+	.description {
+		overflow: hidden;
+		padding-top: 28px;
+	}
+	.title-name {
+		overflow: hidden;
+		margin: 0;
+		dt {
+			float: left;
+		}
+		dd {
+			float: left;
+			margin: 0 0 0 3px;
+		}
+	}
+	address {
+		margin: 0;
+		font-style: normal;
+	}
+}
+.music-list-info {
+	font-size: 12px;
+	line-height: 16px;
+	margin: 0 0 -34px;
+	padding: 0;
+	list-style: none;
+	width: 321px;
+	position: relative;
+	li {
+		overflow: hidden;
+		padding: 0 0 29px;
+	}
+	.photo {
+		float: left;
+		width: 141px;
+		padding: 3px 0 0;
+		img {
+			float: left;
+		}
+	}
+	h2 {
+		font: normal 14px/17px $font-bold;
+		text-transform: uppercase;
+		margin: 0 0 16px;
+	}
+	p {
+		margin: 0 0 21px;
+	}
+	.description {
+		overflow: hidden;
 	}
 }
 #footer {
@@ -2078,7 +2355,38 @@ input:focus::-moz-placeholder {
 		vertical-align: middle;
 	}
 }
-@media only screen and (max-width: 1140px) {
+.photo-container {
+	height: 300px;
+}
+.photo-container.bg1 {
+	background: url(../images/img19.jpg) no-repeat 50% 0;
+}
+.logo-box {
+	float: left;
+	width: 160px;
+	height: 100px;
+}
+.logo-box .l-holder {
+	display: table;
+	height: 100%;
+}
+.logo-box .l-frame {
+	display: table-cell;
+	vertical-align: middle;
+}
+.logo-box img {
+	float: left;
+}
+.big-hidden {
+	display: none;
+}
+@media only screen and (max-width: 1200px) {
+	.big-hidden {
+		display: block;
+	}
+	.event-box.width1 {
+		display: none;
+	}
 	html,
 	body {
 		min-width: $second-width+10;
@@ -2089,8 +2397,7 @@ input:focus::-moz-placeholder {
 	}
 	.twocolumns {
 		.col1 {
-			width: 100%;
-			width: auto;
+			width: 105%;
 			overflow: hidden;
 			.ad {
 				float: left;
@@ -2105,9 +2412,7 @@ input:focus::-moz-placeholder {
 					}
 				}
 				.title-text {
-					float: left;
-					width: 140px;
-					margin: 0;
+					margin-bottom: 7px;
 				}
 				h3 {
 					overflow: hidden;
@@ -2116,17 +2421,17 @@ input:focus::-moz-placeholder {
 		}
 	}
 	.box.bill-box.alignleft {
-		float: right;
+		float: left;
 		margin: 0 0 40px;
-		width: 420px;
+		width: 640px;
 	}
 	.box.style-box {
 		padding: 0 0 19px;
 	}
 	.box.alignleft.publication-box {
 		float: left;
-		width: 620px;
-		margin: 0 0 40px;
+		width: 415px;
+		margin: 0 -40px 40px 40px;
 	}
 	#content {
 		float: left;
@@ -2135,23 +2440,30 @@ input:focus::-moz-placeholder {
 	}
 	.box.music-box.small-size {
 		width: 140px;
-		.music-list {
-			& > li + li + li + li + li {
-				display: none;
-			}
+	}
+	.music-list.alt-space1 {
+		> li {
+			margin: 0 23px 33px 0;
 		}
 	}
 	.box.music-box {
 		padding-bottom: 34px;
 	}
 	.bll-list {
-		li + li + li + li {
-			display: none;
+		width: 110%;
+		.b-hidden {
+			display: inline-block;
+		}
+		li {
+			display: inline-block;
+			vertical-align: top;
+			width: 320px;
+			padding: 0 17px 40px 0;
 		}
 	}
 	.box.poster-box.alignleft {
 		float: right;
-		margin: 0;
+		margin: 0 0 40px;
 		width: 460px;
 	}
 	.music-list {
@@ -2165,7 +2477,14 @@ input:focus::-moz-placeholder {
 	}
 	.publication-list {
 		margin-right: -30px;
+		margin-left: 0;
+		padding-left: 0;
+		border: none;
 		position: relative;
+		width: 100%;
+		&:after {
+			display: none;
+		}
 	}
 	.w1 {
 		width: $second-width;
@@ -2192,9 +2511,6 @@ input:focus::-moz-placeholder {
 		.f-holder {
 			width: $second-width;
 		}
-	}
-	.twocolumns-holder {
-		overflow: visible;
 	}
 	.twocolumns-holder.scroll-column {
 		overflow: hidden;
@@ -2237,6 +2553,57 @@ input:focus::-moz-placeholder {
 	}
 	.bill-list > li {
 		margin-right: 77px;
+	}
+	.logo-box {
+		width: 140px;
+	}
+	.twocolumns-holder.width-only-content {
+		padding-right: 0;
+	}
+	.contact-box .col.width-all {
+		padding: 0;
+	}
+	.blockquote-box .col-visual {
+		width: 120px;
+		padding: 5px 0 0;
+	}
+	.only-small {
+		position: relative !important;
+		left: 0;
+	}
+	.places-list {
+		width: 660px;
+		margin-right: 0;
+		margin-bottom: -70px;
+		li {
+			width: 100%;
+			margin: 0 0 40px;
+		}
+		.photo {
+			float: left;
+		}
+		.content {
+			float: right;
+			padding: 0;
+			width: 140px;
+		}
+		.description {
+			clear: both;
+		}
+	}
+	.music-list-info {
+		width: 142px;
+		.photo {
+			float: left;
+			overflow: hidden;
+			padding: 0 0 16px;
+		}
+		.description {
+			clear: both;
+		}
+		.br {
+			display: block;
+		}
 	}
 }
 .popup {
@@ -2304,6 +2671,17 @@ input:focus::-moz-placeholder {
 	margin: 0 0 20px;
 	position: relative;
 	overflow: hidden;
+	width: 340px;
+	height: 340px;
+	.d-holder {
+		width: 100%;
+		height: 100%;
+		display: table;
+	}
+	.d-frame {
+		display: table-cell;
+		vertical-align: middle;
+	}
 	.mask {
 		position: absolute;
 		top: -172px;
@@ -2316,7 +2694,7 @@ input:focus::-moz-placeholder {
 	}
 	img {
 		display: block;
-		margin: 0 auto;
+		width: 100%;
 	}
 }
 .enter-block {
@@ -2417,7 +2795,7 @@ input:focus::-moz-placeholder {
 /* castom form */
 .selectmenu {
 	float: left;
-	height: 38px;
+	height: 48px;
 	background: $background-black;
 	border: 1px solid $border-black;
 	margin: 0;
@@ -2428,6 +2806,11 @@ input:focus::-moz-placeholder {
 	float: right;
 	background-color: $background-red;
 	border-color: $border-red;
+}
+.selectmenu.width1 {
+	width: 200px !important;
+	float: none;
+	display: inline-block;
 }
 .selectmenu.visual1.all-width {
 	padding-right: 34px;
@@ -2451,11 +2834,25 @@ input:focus::-moz-placeholder {
 	white-space:nowrap;
 	font-size: 14px;
 	line-height: 26px;
-	font: 18px/38px $font-black;
+	font: 18px/48px $main-font;
+	text-transform: uppercase;
+}
+.selectmenu.size1 {
+	height: 40px;
+	.selectmenu-status {
+		font-size: 16px;
+		line-height: 40px;
+	}
+	.selectmenu-icon {
+		top: 17px;
+	}
+	&.active .selectmenu-icon {
+		top: 15px;
+	}
 }
 .selectmenu-icon {
 	position:absolute;
-	top:17px;
+	top:21px;
 	right:11px;
 	height:0;
 	width:0;
@@ -2468,7 +2865,7 @@ input:focus::-moz-placeholder {
 .selectmenu.active .selectmenu-icon {
 	border-bottom:6px solid #fff;
 	border-top: none;
-	top:15px;
+	top:17px;
 }
 .selectmenu-menu {
 	position:absolute;
@@ -2488,7 +2885,7 @@ input:focus::-moz-placeholder {
 	padding:0;
 	outline:none;
 	position:relative;
-	font: 18px/36px $font-black;
+	font: 18px/36px $main-font;
 	color:$color-white;
 }
 .selectmenu-menu li {
@@ -2499,4 +2896,8 @@ input:focus::-moz-placeholder {
 .selectmenu-menu li:hover {
 	color: $color-black;
 	background: $background-white;
+}
+.selectmenu-menu.size1 ul {
+	font-size: 16px;
+	line-height: 30px;
 }

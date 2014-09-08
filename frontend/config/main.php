@@ -61,6 +61,27 @@ $config = array(
                 
             ),
         ),
+        'clientScript' => array(
+            'class' => 'common.components.ClientScript',
+            'wwwPath' => Yii::getPathOfAlias('salatnyk.com.ua'),
+            'cacheTime' => 3600 * 24,
+            'scriptMap' => array(
+            ),
+           'packages' => array(
+                'base' => array(
+                    'baseUrl' => '/',
+                    'js' => array_filter(array(
+                        'js/jquery-1.10.2.min.js',
+                        'js/jquery.main.js',
+                        'js/select.js',
+                        'js/form.js',
+                    )),
+                    'css' => array_filter(array(
+                        'css/all.css'
+                    )),
+                ),
+            ),
+        ),
         'themeManager' => array(
             'basePath' => Yii::getPathOfAlias('frontend'),
             'baseUrl' => Yii::getPathOfAlias('www')
@@ -69,7 +90,6 @@ $config = array(
             'class' => 'common.components.Uploader',
             'subdirs' => 1
         ),
-        /*
         'viewRenderer' => array(
                     'class' => 'frontend.extensions.twig-renderer.ETwigViewRenderer',
         
@@ -94,7 +114,7 @@ $config = array(
                         'email' => array('Tool::obfuscateEmailJs', array('is_safe' => array('html'))),
                         'autop' => array('Tool::autop', array('pre_escape' => 'html', 'is_safe' => array('html'))),
                     ),
-                ),*/
+                ),
         
     ),
 );
