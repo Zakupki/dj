@@ -61,9 +61,15 @@
 							<a href="#" class="download-photo-btn" id="download-photo-btn">
 								<strong>загрузить фото</strong>
 							</a>
-							<div class="personal-photo" style="display: none;">
+							<div class="personal-photo">
 								<a href="#" class="close"><i class="icon-close"></i></a>
-								<a href="#" id="open-personal"><img src="images/personal-ico4.jpg" width="160" height="160" alt="image description"></a>
+								<div class="p-content">
+									<div class="p-holder">
+										<div class="p-frame">
+											<img src="images/bg-black.png" alt="image description">
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<form action="#" class="registration-form">
@@ -77,7 +83,7 @@
 							</div>
 							<div class="row">
 								<span class="area">
-									<select>
+									<select class="size1">
 										<option>+380</option>
 										<option>+380</option>
 										<option>+380</option>
@@ -133,14 +139,18 @@
 				<div class="download-box">
 					<div class="download-photo">
 						<span class="mask">&nbsp;</span>
-						<img src="images/img35.jpg" width="340" height="340" alt="image description">
+						<div class="d-holder">
+							<div class="d-frame">
+								<img src="images/bg-black.png" class="photo-active" alt="image description">
+							</div>
+						</div>
 					</div>
 					<div class="row-btn">
 						<div class="btn alignleft">
 							<strong>загрузить</strong>
-							<input type="file"/>
+							<input type="file" class="file-input-area" />
 						</div>
-						<a href="#" class="btn alignright"><strong>сохранить</strong></a>
+						<a href="#" class="btn btn-download alignright"><strong>сохранить</strong></a>
 					</div>
 				</div>
 			</div>

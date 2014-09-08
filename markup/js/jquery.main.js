@@ -1,8 +1,31 @@
 $(document).ready(function(){
+	// loading input
+	$('.personal-photo').hide();
+	$('.btn-download').hide();
+	$('#photo-download .file-input-area').change(function(){
+		var _ava = $(this).val().split('\\');
+		_ava = _ava[_ava.length -1];
+		$('#photo-download .photo-active').attr('src', 'images/' + _ava);
+		$('.personal-photo img').attr('src', 'images/' + _ava);
+		$('.btn-download').fadeIn();
+	});
+	$('.btn-download').click(function(e){
+		$('#photo-download .btn-close').click();
+		$('#download-photo-btn').fadeOut();
+		$('.personal-photo').fadeIn();
+		e.preventDefault();
+	});
+	$('.personal-photo .close').click(function(e){
+		$('.personal-photo').fadeOut();
+		$('#download-photo-btn').fadeIn();
+		e.preventDefault();
+	});
+	// tab
 	$('.social-tab').tabset({
 		"tab":".tab",
 		"tab_control":".tab-nav"
 	});
+	// gallery
 	$('.gallery').fadeGallery({
 		slideElements:'.gmask > li',
 		autoRotation:true,
@@ -27,52 +50,16 @@ $(document).ready(function(){
 		duration:650,
 		event:'click'
 	});
-
-	
+	var _currentGallery4;
+	$('.pagination-box .count').text($('li',$('.gallery4')).length);
 
 	var deviceAgent = navigator.userAgent.toLowerCase();
 	var agentID = deviceAgent.match(/(iphone|ipod|ipad|android|iemobile|ppc|smartphone|blackberry|webos)/);
 
-	if(!agentID){
-		function boxTop() {
-			var _hPost = $('.scroll-column .post').height()-31,
-				_thisWindow = $(window),
-				_thisTop = _thisWindow.scrollTop(),
-				_hMusic = $('.scroll-column .music-holder').height(),
-				_heightScroll = _hPost - _hMusic;
-				_cssObj = {
-					'position' : 'fixed',
-					'top' : '0',
-					'z-index' : '20'
-				};
-				_cssObjBottom = {
-					'position' : 'absolute',
-					'top' : 'auto',
-					'bottom' : '0'
-				};
-				$('.scroll-column .music-holder').css('height', _hMusic);
-				if (_hPost > _hMusic) {
-					_scrollColumnTop = $('.scroll-column').offset().top,
-					_heightScrollTop = _heightScroll+_scrollColumnTop;
-					$('.scroll-column .music-holder').each(function(){
-						if(_thisTop >= _scrollColumnTop && _thisTop < _heightScrollTop){
-							$('.scroll-column .music-holder').css(_cssObj);
-						}
-						else if (_thisTop >= _scrollColumnTop && _thisTop > _heightScrollTop) {
-							$('.scroll-column .music-holder').css(_cssObjBottom);
-						} else {
-							$('.scroll-column .music-holder').css('position' , 'relative');
-						};
-					});
-				}
-		};
-	};
-	//boxTop();
-	$(window).scroll(function(){
-		boxTop();
-	});
-	$( window ).load(function(){
-		boxTop();
+	$('.stick-parent .stick').each(function(){
+		$(this).stick_in_parent({
+			parent: '.stick-parent'
+		});
 	});
 
 	(function popup() {
@@ -113,13 +100,6 @@ $(document).ready(function(){
 		});
 	})();
 
-	(function popup() {
-		$("body").popup().popup({
-
-		}).popup({
-
-		});
-	})();
 });
 
 $.fn.tabset = function(o){
@@ -164,8 +144,8 @@ $.fn.tabset = function(o){
 
 jQuery.fn.fadeGallery = function(_options){
 	var _options = jQuery.extend({
-		slideElements:'.slideset > li',
-		pagerLinks:'.paging li',
+		slideElements:'.gmask > li',
+		pagerLinks:'.control-panel li',
 		btnNext:'a.btn-next',
 		btnPrev:'a.btn-prev',
 		btnPlayPause:'a.play-pause',
@@ -174,7 +154,7 @@ jQuery.fn.fadeGallery = function(_options){
 		activeClass:'active',
 		pauseOnHover:true,
 		autoRotation:false,
-		autoHeight:true,
+		autoHeight:false,
 		switchTime:3000,
 		duration:650,
 		event:'click'
@@ -257,6 +237,8 @@ jQuery.fn.fadeGallery = function(_options){
 			if(_currentIndex < _slideCount-1) _currentIndex++;
 			else _currentIndex = 0;
 			switchSlide();
+
+			// alert(jQuery($('.gallery4 li'), _currentIndex));
 		}
 		function refreshStatus() {
 			if(_pagerLinks.length) _pagerLinks.removeClass(_activeClass).eq(_currentIndex).addClass(_activeClass);
@@ -267,18 +249,21 @@ jQuery.fn.fadeGallery = function(_options){
 			_slides.stop(true,true);
 			_slides.eq(_prevIndex).fadeOut(_duration);
 			_slides.eq(_currentIndex).fadeIn(_duration);
+
+			if (_this.hasClass('gallery4')) {
+				_currentGallery4 = _currentIndex+1;
+				$('.gallery4 .pagination-box .number-page').text(_currentGallery4);
+			}
+
 			refreshStatus();
 			autoSlide();
-			if (_this.hasClass("gallery4")) {
-				initFadeGallery();
-			};
 		}
+
 
 		function autoSlide() {
 			if(!_autoRotation || _hover) return;
 			if(_timer) clearRequestTimeout(_timer);
 			_timer = requestTimeout(nextSlide,_switchTime+_duration);
-			var _tagName = $(this).hasClass();
 		}
 		if(_pauseOnHover) {
 			_this.hover(function(){
@@ -289,62 +274,8 @@ jQuery.fn.fadeGallery = function(_options){
 				autoSlide();
 			});
 		}
-
-
-		$('.pagination-box .count').text($('li',_this).length);
-		$frame=null;
-		function initFadeGallery(){
-			if ('fadeGallery' in $.fn) {
-				$('.pagination-box .number-page').text(_currentIndex + 1);
-				var $frame = $(' .gallery4');
-				$frame.each(function(){
-					var _thisHolder = $(' .gallery4 .pagination-box .number-page');
-					function prevSlide1() {
-						$('_thisHolder').text(_currentIndex + 1);
-						_prevIndex = _currentIndex;
-						if(_currentIndex > 0) _currentIndex--;
-						else _currentIndex = _slideCount-1;
-						switchSlide1();
-					}
-					function nextSlide1() {
-						$('_thisHolder').text(_currentIndex + 1);
-						_prevIndex = _currentIndex;
-						if(_currentIndex < _slideCount-1) _currentIndex++;
-						else _currentIndex = 0;
-						switchSlide1();
-					}
-					function refreshStatus1() {
-						if(_pagerLinks.length) _pagerLinks.removeClass(_activeClass).eq(_currentIndex).addClass(_activeClass);
-						_slides.eq(_prevIndex).removeClass(_activeClass);
-						_slides.eq(_currentIndex).addClass(_activeClass);
-					}
-					function switchSlide1() {
-						_slides.stop(true,true);
-						_slides.eq(_prevIndex).fadeOut(_duration);
-						_slides.eq(_currentIndex).fadeIn(_duration);
-						refreshStatus1();
-						autoSlide1();
-					}
-					function autoSlide1() {
-						$('_thisHolder').text(_currentIndex + 1);
-						if(!_autoRotation || _hover) return;
-						if(_timer) clearRequestTimeout(_timer);
-						_timer = requestTimeout(nextSlide,_switchTime+_duration);
-					}
-					refreshStatus1();
-					autoSlide1();
-					console.log('1111');
-				});
-			};
-		};
-
-		$('.gallery4 .btn-next, .gallery4 .btn-prev').click(function(){
-			initFadeGallery()
-		});
-		
 		refreshStatus();
 		autoSlide();
-		
 	});
 }
 
