@@ -1,6 +1,5 @@
 <?php
-//if(isset($_COOKIE['__debug__atl']))
-if(1==2)
+if(isset($_COOKIE['__debug__atl']) || 1==2)
 {
     $config['modules']['rights']['debug'] = true;
     $config['components']['db']['enableProfiling'] = true;

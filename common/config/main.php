@@ -42,8 +42,8 @@ $config = array(
         ),
         'db' => array(
             'connectionString' => 'mysql:host=localhost;dbname=dj',
-            'username' => 'u_bozhok',
-            'password' => 'bozhok1984',
+            'username' => 'root',
+            'password' => 'gabel1984',
             'emulatePrepare' => true,
             'charset' => 'utf8',
             'tablePrefix' => 'z_',
@@ -67,14 +67,14 @@ $config = array(
             'assignmentTable' => 'z_auth_assignment',
             'rightsTable' => 'z_rights',
         ),
-        'cache2' => array(
+       /* 'cache2' => array(
             'class' => 'system.caching.CFileCache',
             'keyPrefix' => 'default',
             'cachePath' => Yii::getPathOfAlias('common.runtime.cache')
         ),
         'cache' => array(
             'class' => 'system.caching.CDummyCache',
-        ),
+        ),*/
        /* 'cache'=>array(
             'class'=>'system.caching.CMemCache',
             'servers'=>array(
@@ -122,11 +122,11 @@ $config = array(
                     'levels'=>'trace, info',
                     'categories'=>'system.*',
                 ),*/
-                array(
+               /* array(
                     'class'=>'CEmailLogRoute',
                     'levels'=>'error, notice',
                     'emails'=>'dmitriy.bozhok@gmail.com',
-                ),
+                ),*/
             ),
         ),
     ),
@@ -137,7 +137,7 @@ $config = array(
 
     'params' => array(
         // relative to Yii::app()->basePath/..
-        'webRoot' => 'public_html',
+        'webRoot' => 'newzakupki.reactor.ua',
         'adminEmail' => 'info@zakupki-online.ua',
         'noreply' => 'info@zakupki-online.com',
         'cacheDuration' => 3600,

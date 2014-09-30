@@ -70,6 +70,7 @@ class SiteController extends FrontController
                     $this->render('error', $error);
                 }
             }
+            CVarDumper::dump($error,10,true);
         }
     }
 

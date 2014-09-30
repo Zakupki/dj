@@ -1,8 +1,7 @@
 <?php
 $config = array(
     'params' => array(
-        'noreply' => 'support@zakupki-online.com',
-        'take' => 5,
+        'noreply' => 'no-reply@gstyle.atelier.ua',
     )
 );
 @include('dev-local.php');

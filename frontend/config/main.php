@@ -2,79 +2,49 @@
 Yii::setPathOfAlias('frontend', ROOT.'frontend');
 Yii::setPathOfAlias('www', ROOT.'../..');
 $config = array(
+    'id' => 'frontend',
     'basePath' => ROOT.'frontend',
-    'name' => 'Frontend',
+    'name' => 'Салатник',
     'theme' => '',
     'import' => array(
         'frontend.models.*',
         'frontend.components.*',
     ),
     'components' => array(
-        'user' => array(
-            'class' => 'WebUser',
-            'loginUrl' => array('/site/login'),
-            'stateKeyPrefix' => 'user',
-            'allowAutoLogin' => true,
-        ),
         'request' => array(
             'enableCsrfValidation' => false,
             'csrfTokenName' => 'ftoken',
         ),
-       /*
-        'user' => array(
-                   'class' => 'WebUser',
-                   'loginUrl' => array('/site/login'),
-                   'allowAutoLogin' => true,
-               ),*/
-       
         'urlManager' => array(
-           /* 'class' => 'frontend.components.UrlManager',*/
+            'class' => 'frontend.components.UrlManager',
             'urlFormat' => 'path',
             'showScriptName' => false,
-            /*'vars' => array('page', 'p', 'id', 'q'),*/
+            'vars' => array('page', 'p', 'id', 'q'),
             'rules' => array(
-                /*
-                array(
-                                    'class' => 'UrlRule',
-                                    'actions' => array()
-                                ),*/
-                
-
-               /*
-                '<lang:\w{2}>/<controller:\w+>' => '<controller>',
-                               '<lang:\w{2}>/<controller:\w+>/<id:\d+>' => '<controller>/view',
-                               '<lang:\w{2}>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-                               '<lang:\w{2}>/<controller:\w+>/<action:\w+>' => '<controller>/<action>',*/
-               
-
+                '' => 'site/index',
                 '<controller:\w+>' => '<controller>',
-                '<controller:\w+>/<id:\d+>/<title:\w+>' => '<controller>/view',
+                'category/<category:\w+>' => 'category/index',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
-                '<controller:\w+>/page/<page:\d+>' => '<controller>',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-                'page/<code:\w+>'=>'page/view',
-                'site/message/<message:\w+>'=>'site/message',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-               
-                
-                
-                
             ),
         ),
         'clientScript' => array(
             'class' => 'common.components.ClientScript',
             'wwwPath' => Yii::getPathOfAlias('salatnyk.com.ua'),
-            'cacheTime' => 3600 * 24,
+            //'cacheTime' => 3600 * 24,
+            'cacheTime' => 0,
             'scriptMap' => array(
             ),
-           'packages' => array(
+            'packages' => array(
                 'base' => array(
                     'baseUrl' => '/',
                     'js' => array_filter(array(
                         'js/jquery-1.10.2.min.js',
-                        'js/jquery.main.js',
-                        'js/select.js',
-                        'js/form.js',
+                        'js/jquery.validate.js',
+                        'js/jquery.scrollTo.js',
+                        'js/jquery.nav.js',
+                        'js/jquery.main.js'
                     )),
                     'css' => array_filter(array(
                         'css/all.css'
@@ -86,36 +56,43 @@ $config = array(
             'basePath' => Yii::getPathOfAlias('frontend'),
             'baseUrl' => Yii::getPathOfAlias('www')
         ),
-        'uploader' => array(
-            'class' => 'common.components.Uploader',
-            'subdirs' => 1
-        ),
         'viewRenderer' => array(
-                    'class' => 'frontend.extensions.twig-renderer.ETwigViewRenderer',
-        
-                    // All parameters below are optional, change them to your needs
-                    'fileExtension' => '.twig',
-                    'options' => array(
-                        'autoescape' => true,
-                    ),
-                    'extensions' => array(
-                    ),
-                    'globals' => array(
-                        'html' => 'CHtml'
-                    ),
-                    'functions' => array(
-                        't' => 'Yii::t',
-                        'file' => 'File::fileLink',
-                        'image' => 'File::image',
-                        'opt' => 'Option::getOpt',
-                        'parseTime' => 'Tool::parseTime',
-                    ),
-                    'filters' => array(
-                        'email' => array('Tool::obfuscateEmailJs', array('is_safe' => array('html'))),
-                        'autop' => array('Tool::autop', array('pre_escape' => 'html', 'is_safe' => array('html'))),
-                    ),
-                ),
-        
+            'class' => 'frontend.extensions.twig-renderer.ETwigViewRenderer',
+
+            // All parameters below are optional, change them to your needs
+            'fileExtension' => '.twig',
+            'options' => array(
+                'autoescape' => true,
+            ),
+            'extensions' => array(
+            ),
+            'globals' => array(
+                'html' => 'CHtml',
+            ),
+            'functions' => array(
+                't' => 'Yii::t',
+                'fileUrl' => 'File::fileUrl',
+                'file' => 'File::htmlLinkFile',
+                'image' => 'File::htmlImageEx',
+                'opt' => 'Option::getOpt',
+                'parseTime' => 'Tool::parseTime',
+                'hasImage' => 'Tool::hasImage',
+                'embed' => 'Tool::embedVideo',
+                'keyDefined' => 'Tool::keyDefined',
+                'dump' => 'print_r',
+            ),
+            'filters' => array(
+                'image' => array('File::htmlImageEx', array('is_safe' => array('html'))),
+                'fileUrl' => array('File::fileUrl', array('is_safe' => array('html'))),
+                'ext' => array('File::extensionName', array('is_safe' => array('html'))),
+                'email' => array('Tool::obfuscateEmailJs', array('is_safe' => array('html'))),
+                'autop' => array('Tool::autop', array('pre_escape' => 'html', 'is_safe' => array('html'))),
+                'url' => array('Tool::url', array('pre_escape' => 'html', 'is_safe' => array('html'))),
+                'price' => array('Tool::nicePrice', array('pre_escape' => 'html', 'is_safe' => array('html'))),
+                'nicePrice' => array('Tool::nicePrice', array('pre_escape' => 'html', 'is_safe' => array('html'))),
+                'translit' => array('Transliteration::text', array('pre_escape' => 'html', 'is_safe' => array('html'))),
+            ),
+        ),
     ),
 );
 
